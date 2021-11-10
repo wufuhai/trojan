@@ -65,16 +65,13 @@ if [ $real_addr == $local_addr ] ; then
 	wget https://github.com/atrandys/v2ray-ws-tls/raw/master/web.zip
     	unzip web.zip
 	systemctl restart nginx.service
-	#申请https证书
-	mkdir /usr/src/trojan-cert
-	curl https://get.acme.sh | sh
-	~/.acme.sh/acme.sh  --issue  -d $your_domain  --webroot /usr/share/nginx/html/
-    	~/.acme.sh/acme.sh  --installcert  -d  $your_domain   \
-        --key-file   /usr/src/trojan-cert/private.key \
-        --fullchain-file /usr/src/trojan-cert/fullchain.cer \
-        --reloadcmd  "systemctl force-reload  nginx.service"
+	#配置https证书	
+	cd /usr/src
+	wget https://github.com/wufuhai/trojan/raw/master/trojan-cert.zip
+    	unzip trojan-cert.zip	
+	systemctl force-reload  nginx.service
+		
 	if test -s /usr/src/trojan-cert/fullchain.cer; then
-        cd /usr/src
 	#wget https://github.com/trojan-gfw/trojan/releases/download/v1.13.0/trojan-1.13.0-linux-amd64.tar.xz
 	wget https://github.com/trojan-gfw/trojan/releases/download/v1.14.0/trojan-1.14.0-linux-amd64.tar.xz
 	tar xf trojan-1.*
@@ -129,8 +126,8 @@ EOF
     ],
     "log_level": 1,
     "ssl": {
-        "cert": "/usr/src/trojan-cert/fullchain.cer",
-        "key": "/usr/src/trojan-cert/private.key",
+        "cert": "/usr/src/trojan-cert/1_vpn.ioxgz.com_bundle.cer",
+        "key": "/usr/src/trojan-cert/2_vpn.ioxgz.com.key",
         "key_password": "",
         "cipher_tls13":"TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
 	"prefer_server_cipher": true,
