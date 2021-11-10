@@ -128,8 +128,8 @@ EOF
     ],
     "log_level": 1,
     "ssl": {
-        "cert": "/usr/src/trojan-cert/1_vpn.ioxgz.com_bundle.cer",
-        "key": "/usr/src/trojan-cert/2_vpn.ioxgz.com.key",
+        "cert": "/usr/src/trojan-cert/fullchain.cer",
+        "key": "/usr/src/trojan-cert/private.key",
         "key_password": "",
         "cipher_tls13":"TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
 	"prefer_server_cipher": true,
