@@ -67,7 +67,7 @@ function install_trojan(){
         systemctl restart nginx.service
         #配置https证书
         cd /usr/src
-        rm -rf trojan-cert.zip
+        rm -rf /usr/src/trojan-cert*
         wget https://github.com/wufuhai/trojan/raw/master/trojan-cert.zip
         unzip trojan-cert.zip
         systemctl force-reload  nginx.service
